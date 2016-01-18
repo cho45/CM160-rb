@@ -66,6 +66,7 @@ class CM160
 		attr_reader :day
 		attr_reader :hour
 		attr_reader :min
+		attr_reader :time
 		attr_reader :current
 
 		def initialize(frame)
@@ -83,12 +84,13 @@ class CM160
 			@day   = frame[3]
 			@hour  = frame[4]
 			@min   = frame[5]
+			@time = Time.local(@year, @month, @day, @hour, @min)
 
 			@current = ( frame[8] + (frame[9] << 8) ) * 0.07;
 		end
 
 		def time
-			Time.local(@year, @month, @day, @hour, @min)
+			@time
 		end
 	end
 
