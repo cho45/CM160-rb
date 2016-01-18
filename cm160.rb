@@ -153,7 +153,7 @@ if $0 == __FILE__
 	meter = CM160.new(port: "/dev/ttyUSB0")
 	meter.get_data do |data|
 		if Time.now - data.time > 120
-			meter.logger.warn "old date... skip #{time}"
+			meter.logger.warn "old date... skip #{data.time}"
 			next
 		end
 
